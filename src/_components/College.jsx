@@ -25,20 +25,6 @@ const College = () => {
       <div className="container mx-auto px-6">
         <div className="relative z-10 bg-white shadow-xl rounded-3xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Image Section */}
-            <motion.div
-              className="h-80 md:h-auto group"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-            >
-              <img
-                src="https://tneacounselling.in/wp-content/uploads/2022/08/St.-Josephs-Institute-of-Technology-Chennai.jpg"
-                alt="College Campus"
-                className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
-              />
-            </motion.div>
-
             {/* Content Section */}
             <motion.div
               className="p-8 flex flex-col justify-center space-y-6"
@@ -46,7 +32,7 @@ const College = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <h2 className="text-4xl font-semibold text-gray-800">
+              <h2 className="text-4xl font-extrabold text-gray-800">
                 About Our College
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
@@ -69,7 +55,19 @@ const College = () => {
                 <li>State-of-the-art Laboratories</li>
                 <li>Strong Industry Collaborations</li>
               </ul>
-       
+            </motion.div>
+            {/* Image Section */}
+            <motion.div
+              className="h-80 md:h-auto group"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <img
+                src="https://tneacounselling.in/wp-content/uploads/2022/08/St.-Josephs-Institute-of-Technology-Chennai.jpg"
+                alt="College Campus"
+                className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
+              />
             </motion.div>
           </div>
         </div>

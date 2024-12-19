@@ -10,51 +10,59 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // Define links separately
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Committee", path: "/committee" },
+    { name: "Call for Articles", path: "/call" },
+    { name: "Submission", path: "/submission" },
+    { name: "Schedule", path: "/schedule" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 w-full z-50">
+    <nav className="fixed top-0 w-full bg-white shadow-md text-black z-50">
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <motion.div
-          className="text-white text-3xl font-extrabold tracking-wide"
+          className="text-black text-3xl font-extrabold tracking-wide"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
           <Link
             to="/"
-            className="hover:text-yellow-300 transition duration-300"
+            className="hover:text-yellow-600 transition duration-300"
           >
-            Conf<span className="text-yellow-300">X</span>
+            Conf<span className="text-yellow-400">X</span>
           </Link>
         </motion.div>
 
         {/* Menu (Desktop View) */}
-        <div className="hidden md:flex space-x-8 text-white font-medium">
-          {["Home", "About", "Speakers", "Schedule", "Contact"].map(
-            (item, index) => (
-              <motion.div
-                key={item}
-                whileHover={{ scale: 1.1 }}
-                className="relative group"
+        <div className="hidden md:flex space-x-8 text-black font-bold">
+          {navLinks.map((link, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1 }}
+              className="relative group"
+            >
+              <Link
+                to={link.path}
+                className="hover:text-yellow-600 transition duration-300"
               >
-                <Link
-                  to={`/${item.toLowerCase()}`}
-                  className="hover:text-yellow-300 transition duration-300"
-                >
-                  {item}
-                </Link>
-                <motion.div
-                  className="absolute bottom-0 left-0 h-0.5 w-0 bg-yellow-300 transition-all group-hover:w-full"
-                  layoutId="underline"
-                />
-              </motion.div>
-            )
-          )}
+                {link.name}
+              </Link>
+              <motion.div
+                className="absolute bottom-0 left-0 h-0.5 w-0 bg-yellow-600 transition-all group-hover:w-full"
+                layoutId="underline"
+              />
+            </motion.div>
+          ))}
         </div>
 
         {/* Menu Icon (Mobile View) */}
         <div className="md:hidden">
-          <button onClick={toggleSidebar} className="text-white text-2xl">
+          <button onClick={toggleSidebar} className="text-black text-2xl">
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
@@ -81,14 +89,14 @@ const Navbar = () => {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         <div className="flex flex-col items-center mt-10">
-          {["Home", "About", "Speakers", "Schedule", "Contact"].map((item) => (
+          {navLinks.map((link, index) => (
             <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
+              key={index}
+              to={link.path}
               className="text-xl font-semibold text-gray-800 hover:text-purple-500 my-3 transition duration-300"
               onClick={toggleSidebar}
             >
-              {item}
+              {link.name}
             </Link>
           ))}
         </div>
