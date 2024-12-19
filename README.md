@@ -37,7 +37,7 @@ To run the frontend project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/conference-website.git
+   git clone https://github.com/johnwesley755/conference-website.git
    ```
 2. Navigate to the project directory:
    ```bash
