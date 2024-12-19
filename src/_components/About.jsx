@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <section className="relative py-20 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
@@ -41,7 +41,6 @@ const About = () => {
             alt="Event"
             className="rounded-3xl shadow-2xl object-cover"
           />
-   
         </motion.div>
 
         {/* Event Details */}
@@ -76,13 +75,14 @@ const About = () => {
             collaborate on innovative ideas, and explore solutions that address
             global challenges through technology.
           </p>
-          <motion.button
-            className="px-8 py-3 bg-gradient-to-r  from-yellow-400 via-red-500 to-pink-500 text-white font-semibold text-lg rounded-lg shadow-lg hover:from-pink-600 hover:to-yellow-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            Learn More
-          </motion.button>
+          <Link to='/submission'>
+            <motion.button
+              className="px-8 py-3 bg-gradient-to-r  from-yellow-400 via-red-500 to-pink-500 text-white font-semibold text-lg rounded-lg shadow-lg hover:from-pink-600 hover:to-yellow-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+       
+            >
+              Learn More
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

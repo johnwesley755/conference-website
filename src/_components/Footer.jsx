@@ -5,7 +5,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-
+import conferenceImg from "../assets/ieee.png";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10">
@@ -15,11 +15,24 @@ const Footer = () => {
         <div className="flex flex-wrap justify-between items-center text-center md:text-left gap-8">
           {/* Logo & Description */}
           <div className="w-full md:w-1/3">
-            <h3 className="text-xl font-bold mb-4">Conference 2025</h3>
-            <p className="text-gray-400 text-sm">
+            <h1 className="text-3xl font-bold mb-4">Conference 2025</h1>
+            <p className="text-gray-400 text-md">
               Join us at the 6<sup>th</sup> International Conference on Mobile
               Computing and Sustainable Informatics.
             </p>
+            {/* College & IEEE Logos */}
+            <div className="flex items-center justify-center md:justify-start space-x-4 mt-4">
+              <img
+                src="https://stjosephstechnology.ac.in/home/wp-content/uploads/2023/07/footer-logo.png"
+                alt="College Logo"
+                className="h-16 object-contain"
+              />
+              <img
+                src={conferenceImg}
+                alt="IEEE Logo"
+                className="h-10 object-contain"
+              />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -27,23 +40,33 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#schedule" className="hover:text-yellow-400">
+                <a href="/" className="hover:text-yellow-400">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/committee" className="hover:text-yellow-400">
+                  Committee
+                </a>
+              </li>
+              <li>
+                <a href="/call" className="hover:text-yellow-400">
+                  Call for Articles
+                </a>
+              </li>
+              <li>
+                <a href="/submission" className="hover:text-yellow-400">
+                  Submission
+                </a>
+              </li>
+              <li>
+                <a href="/registration" className="hover:text-yellow-400">
+                  Registration
+                </a>
+              </li>
+              <li>
+                <a href="/schedule" className="hover:text-yellow-400">
                   Schedule
-                </a>
-              </li>
-              <li>
-                <a href="#register" className="hover:text-yellow-400">
-                  Register
-                </a>
-              </li>
-              <li>
-                <a href="#speakers" className="hover:text-yellow-400">
-                  Speakers
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-yellow-400">
-                  Contact Us
                 </a>
               </li>
             </ul>
