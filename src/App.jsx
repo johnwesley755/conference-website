@@ -7,6 +7,7 @@ import Committee from "./pages/Committee";
 import Call from "./pages/Call";
 import Schedule from "./pages/Schedule";
 import Submission from "./pages/Submission";
+import Registration from "./pages/Registration";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/call' element={<Call />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/submission" element={<Submission />} />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
       <Footer />
     </Router>

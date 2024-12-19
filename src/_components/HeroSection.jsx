@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button"; // Shadcn Button component
 import { Link } from "react-router-dom";
+import conferenceImg from "../assets/ieee.png"
 const HeroSection = () => {
   return (
     <section
@@ -40,9 +41,9 @@ const HeroSection = () => {
             aria-label="College Logo"
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/IEEE_logo.svg/1200px-IEEE_logo.svg.png"
+            src={conferenceImg}
             alt="Conference Logo"
-            className="h-20 md:h-20 object-contain max-[360px]:h-8"
+            className="h-12 md:h-12 object-contain max-[360px]:h-8"
             aria-label="Conference Logo"
           />
         </div>
@@ -90,12 +91,14 @@ const HeroSection = () => {
               Schedule
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            className="text-sm md:text-lg px-4 py-2 md:px-6 md:py-3 border-white text-black max-[360px]:text-xs max-[360px]:px-3 max-[360px]:py-2"
-          >
-            More Info
-          </Button>
+          <Link to="/submission">
+            <Button
+              variant="outline"
+              className="text-sm md:text-lg px-4 py-2 md:px-6 md:py-3 border-white text-black max-[360px]:text-xs max-[360px]:px-3 max-[360px]:py-2"
+            >
+              More Info
+            </Button>
+          </Link>
         </div>
 
         {/* Contact */}
