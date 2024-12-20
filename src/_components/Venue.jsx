@@ -7,11 +7,24 @@ const googleMapsLink =
 
 const Venue = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-200 to-blue-300 py-16">
-      <div className="container mx-auto px-6 z-10">
-        {/* Title */}
+    <div className="relative min-h-screen bg-gray-100 flex flex-col items-center py-16 px-6 overflow-hidden">
+      {/* Background Gradient Shapes */}
+      <motion.div
+        className="absolute top-16 left-10 w-60 h-60 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full z-0 opacity-50"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.8, 0.6] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      ></motion.div>
+      <motion.div
+        className="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-r from-pink-400 to-yellow-500 rounded-lg z-0 opacity-50"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.8, 0.6] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      ></motion.div>
+
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-6xl text-center">
+        {/* Title Section */}
         <motion.h1
-          className="text-6xl font-extrabold mt-16 text-center text-blue-900 mb-16"
+          className="text-5xl md:text-6xl font-extrabold text-blue-900 mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -19,82 +32,74 @@ const Venue = () => {
           Venue 🌏✨
         </motion.h1>
 
-        {/* Venue Section */}
+        {/* Venue Info Section */}
         <motion.div
-          className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-10 mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white rounded-3xl shadow-2xl p-8"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold text-blue-800 mb-6">
-            Welcome to St. Joseph's Institute of Technology 🎓
-          </h2>
-          <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-            Nestled in the heart of Chennai, our campus offers vibrant academic
-            opportunities and a memorable environment. 🌟 Join us and experience
-            excellence firsthand! 🏫💡
-          </p>
-          {/* Google Maps Link */}
-          📍
-          <a
-            href={googleMapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline text-lg mb-4 inline-block font-semibold"
-          >
-            View on Google Maps
-          </a>
-          {/* QR Code */}
-          <div className="flex justify-center mt-6">
-            <QRCode value={googleMapsLink} size={200} />
+          {/* Left Column */}
+          <div className="space-y-6 text-left">
+            <h2 className="text-4xl font-bold text-blue-800">
+              Welcome to St. Joseph's Institute of Technology 🎓
+            </h2>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              Nestled in the heart of Chennai, our campus offers vibrant
+              academic opportunities and a memorable environment. 🌟 Join us and
+              experience excellence firsthand! 🏫💡
+            </p>
+            <a
+              href={googleMapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg shadow-md transition"
+            >
+              📍 View on Google Maps
+            </a>
+          </div>
+
+          {/* Right Column (QR Code) */}
+          <div className="flex flex-col items-center justify-center bg-gradient-to-br from-purple-300 via-pink-200 to-yellow-300 rounded-3xl p-6 shadow-md">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              Scan to Locate Us
+            </h3>
+            <QRCode value={googleMapsLink} size={180} />
           </div>
         </motion.div>
 
         {/* How to Reach Section */}
         <motion.div
-          className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-10 mb-16"
+          className="bg-white rounded-3xl shadow-2xl p-8 mt-12"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
           <h3 className="text-3xl font-bold text-blue-800 mb-6">
             How to Reach Us 🚗🚉
           </h3>
-          <ul className="list-none space-y-6 text-lg text-gray-700">
-            <li className="flex items-center space-x-3">
-              <span className="text-3xl">📍</span>
-              <span>Conveniently located on OMR, Chennai</span>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <li className="flex items-start space-x-4">
+              <span className="text-4xl">📍</span>
+              <span className="text-lg text-gray-700">
+                Conveniently located on OMR, Chennai
+              </span>
             </li>
-            <li className="flex items-center space-x-3">
-              <span className="text-3xl">🚌</span>
-              <span>Close to major bus stops and metro stations</span>
+            <li className="flex items-start space-x-4">
+              <span className="text-4xl">🚌</span>
+              <span className="text-lg text-gray-700">
+                Close to major bus stops and metro stations
+              </span>
             </li>
-            <li className="flex items-center space-x-3">
-              <span className="text-3xl">🚗</span>
-              <span>Ample parking for visitors and staff</span>
+            <li className="flex items-start space-x-4">
+              <span className="text-4xl">🚗</span>
+              <span className="text-lg text-gray-700">
+                Ample parking for visitors and staff
+              </span>
             </li>
           </ul>
         </motion.div>
       </div>
-
-      {/* Background Gradient Shapes */}
-      <motion.div
-        className="absolute top-16 max-md:hidden left-16 w-72 h-72 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full z-0 shadow-lg"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.7, 1, 0.7],
-        }}
-        transition={{ duration: 3, repeat: Infinity }}
-      ></motion.div>
-
-      <motion.div
-        className="absolute bottom-16 right-16 w-72 h-72 bg-gradient-to-r from-pink-400 to-yellow-500 rounded-lg z-0 shadow-lg"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.7, 1, 0.7],
-        }}
-        transition={{ duration: 3, repeat: Infinity }}
-      ></motion.div>
     </div>
   );
 };
