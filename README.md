@@ -66,10 +66,10 @@ Follow these steps to set up the project locally:
 ## 📸 **Screenshots**  
 
 ### 🌟 Home Page:  
-![Home Page](https://via.placeholder.com/1200x600.png?text=Home+Page+Preview)  
+![Home Page](src/assets/HomePage.png)  
 
 ### 📋 Schedule Page:  
-![Schedule Page](https://via.placeholder.com/1200x600.png?text=Schedule+Page+Preview)  
+![Schedule Page](src/assets/SchedulePage.png)  
 
 ---
 
