@@ -1,24 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
+import {
+  FaHome,
+  FaUsers,
+  FaBook,
+  FaFileAlt,
+  FaRegEdit,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Define links separately
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Committee", path: "/committee" },
-    { name: "Call for Articles", path: "/call" },
-    { name: "Submission", path: "/submission" },
-    { name: "Registration", path: "/registration" },
-    { name: "Schedule", path: "/schedule" },
-   
+    { name: "Home", path: "/", icon: <FaHome /> },
+    { name: "Committee", path: "/committee", icon: <FaUsers /> },
+    { name: "Call for Articles", path: "/call", icon: <FaBook /> },
+    { name: "Submission", path: "/submission", icon: <FaFileAlt /> },
+    { name: "Registration", path: "/registration", icon: <FaRegEdit /> },
+    { name: "Schedule", path: "/schedule", icon: <FaCalendarAlt /> },
   ];
 
   return (
@@ -49,7 +56,10 @@ const Navbar = () => {
             >
               <Link
                 to={link.path}
-                className="hover:text-yellow-600 transition duration-300"
+                className={`hover:text-yellow-600 transition duration-300 ${
+                  location.pathname === link.path ? "text-yellow-600" : ""
+                }`}
+                aria-label={`Go to ${link.name}`}
               >
                 {link.name}
               </Link>
@@ -63,30 +73,37 @@ const Navbar = () => {
 
         {/* Menu Icon (Mobile View) */}
         <div className="md:hidden">
-          <button onClick={toggleSidebar} className="text-black text-2xl">
+          <button
+            onClick={toggleSidebar}
+            className="text-black text-2xl"
+            aria-label="Toggle menu"
+          >
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
       {/* Sidebar Overlay (Mobile View) */}
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-60 z-40"
-          onClick={toggleSidebar}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        ></motion.div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-60 z-40"
+            onClick={toggleSidebar}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Sidebar (Mobile View) */}
       <motion.div
-        className={`fixed top-0 right-0 h-full w-3/4 bg-gradient-to-b from-white to-gray-100 shadow-lg z-50 transform ${
+        className={`fixed top-0 right-0 h-full w-3/4 bg-gradient-to-b from-yellow-50 to-gray-200 shadow-lg z-50 transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         initial={{ x: "100%" }}
         animate={{ x: isOpen ? "0%" : "100%" }}
+        exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         <div className="flex flex-col items-center mt-10">
@@ -94,9 +111,15 @@ const Navbar = () => {
             <Link
               key={index}
               to={link.path}
-              className="text-xl font-semibold text-gray-800 hover:text-purple-500 my-3 transition duration-300"
+              className={`flex items-center text-lg font-semibold px-4 py-2 w-full hover:bg-yellow-100 rounded-md transition duration-300 ${
+                location.pathname === link.path
+                  ? "bg-yellow-100 text-yellow-600"
+                  : "text-gray-800"
+              }`}
               onClick={toggleSidebar}
+              aria-label={`Go to ${link.name}`}
             >
+              <span className="text-xl mr-3">{link.icon}</span>
               {link.name}
             </Link>
           ))}
