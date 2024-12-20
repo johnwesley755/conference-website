@@ -42,7 +42,7 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:  
    ```bash  
-   git clone https://github.com/your-username/conference-website.git  
+   git clone https://github.com/johnwesley755/conference-website.git  
    cd conference-website  
    ```  
 
